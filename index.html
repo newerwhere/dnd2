@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Фидельо Искросвет — Личное дело №006</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Caveat:wght@500;600&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root{
+  --ink: #0e1a16;
+  --ink-deep: #070d0b;
+  --paper: #ece1c4;
+  --paper-dim: #d8caa4;
+  --brass: #c9a227;
+  --brass-bright: #e6c25a;
+  --ember: #d9602a;
+  --ember-bright: #f0813f;
+  --verdigris: #5f9080;
+  --verdigris-dim: #3d5f54;
+  --ink-text: #241b12;
+  --line: rgba(201,162,39,0.35);
+}
+
+*{ box-sizing: border-box; }
+
+html,body{
+  margin:0; padding:0;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: 'Spectral', serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+body{
+  background:
+    radial-gradient(circle at 15% 8%, rgba(95,144,128,0.10), transparent 40%),
+    radial-gradient(circle at 85% 92%, rgba(217,96,42,0.10), transparent 45%),
+    var(--ink);
+}
+
+.wrap{ max-width: 980px; margin: 0 auto; padding: 32px 20px 80px; }
+
+/* ---------- HERO ---------- */
+.hero{
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 46px 40px 38px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.02), transparent 60%),
+    var(--ink-deep);
+  overflow: hidden;
+}
+.hero::before{
+  content:"";
+  position:absolute; inset:8px;
+  border: 1px solid rgba(201,162,39,0.18);
+  border-radius: 2px;
+  pointer-events:none;
+}
+.hero::after{
+  content:"";
+  position:absolute; right:-60px; top:-60px;
+  width:260px; height:260px; border-radius:50%;
+  background: radial-gradient(circle, rgba(217,96,42,0.25), transparent 70%);
+  filter: blur(2px);
+}
+.case-number{
+  font-family:'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: var(--brass-bright);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  display:flex; align-items:center; gap:10px;
+}
+.case-number .rule{ flex:1; height:1px; background: var(--line); }
+
+h1{
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  margin: 0 0 10px;
+  color: var(--paper);
+  letter-spacing: 0.01em;
+  text-shadow: 0 0 30px rgba(217,96,42,0.15);
+}
+.subtitle{
+  font-family:'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--verdigris);
+  letter-spacing: 0.06em;
+  margin-bottom: 20px;
+}
+.tags{ display:flex; flex-wrap:wrap; gap:8px; }
+.tag{
+  font-family:'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing:0.05em;
+  padding: 5px 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--brass-bright);
+  background: rgba(201,162,39,0.06);
+}
+
+/* ---------- SECTION HEADERS ---------- */
+.section{ margin-top: 46px; }
+.section-head{
+  display:flex; align-items:baseline; gap:14px;
+  margin-bottom: 20px;
+}
+.section-head .num{
+  font-family:'JetBrains Mono', monospace;
+  color: var(--ember-bright);
+  font-size: 13px;
+}
+.section-head h2{
+  font-family:'Cinzel', serif;
+  font-size: 1.3rem;
+  font-weight:600;
+  color: var(--brass-bright);
+  margin:0;
+  letter-spacing:0.03em;
+}
+.section-head .rule{ flex:1; height:1px; background: var(--line); }
+
+/* ---------- TL;DR PARCHMENT ---------- */
+.parchment{
+  background: var(--paper);
+  color: var(--ink-text);
+  border-radius: 3px;
+  padding: 28px 30px;
+  position: relative;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.35);
+  font-family:'Spectral', serif;
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+.parchment::before{
+  content:"";
+  position:absolute; inset:0;
+  background: linear-gradient(115deg, rgba(0,0,0,0.05) 0%, transparent 30%);
+  pointer-events:none;
+}
+.parchment .lead{
+  font-weight:600;
+  color: #4a2f14;
+}
+.stamp{
+  position:absolute; top:18px; right:22px;
+  width:64px; height:64px;
+  border: 2px solid var(--ember);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  transform: rotate(-12deg);
+  opacity:0.75;
+}
+.stamp span{
+  font-family:'Cinzel', serif;
+  font-size: 9px;
+  color: var(--ember);
+  text-align:center;
+  letter-spacing:0.05em;
+  line-height:1.2;
+}
+
+/* ---------- DIALS (signature element) ---------- */
+.dials{
+  display:grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+.dial-card{
+  background: var(--ink-deep);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 18px 10px 14px;
+  text-align:center;
+}
+.dial{ width: 84px; height:84px; margin: 0 auto 10px; }
+.dial-value{
+  font-family:'JetBrains Mono', monospace;
+  font-weight:700;
+  font-size: 1.05rem;
+  fill: var(--brass-bright);
+}
+.dial-label{
+  font-family:'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--verdigris);
+}
+
+/* ---------- TWO COL ---------- */
+.two-col{
+  display:grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 22px;
+  align-items: stretch;
+}
+.card-dark{
+  background: var(--ink-deep);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 24px 26px;
+}
+.card-dark h3{
+  font-family:'Cinzel', serif;
+  font-size: 1rem;
+  color: var(--brass-bright);
+  margin: 0 0 14px;
+  letter-spacing:0.03em;
+}
+ul.trait-list{
+  margin:0; padding-left: 18px;
+}
+ul.trait-list li{
+  margin-bottom: 9px;
+  color: var(--paper-dim);
+}
+ul.trait-list li::marker{ color: var(--ember-bright); }
+
+.note-card{
+  background: var(--ink-deep);
+  border: 1px solid rgba(217,96,42,0.4);
+  border-radius: 4px;
+  padding: 24px 26px;
+  position: relative;
+}
+.note-card::before{
+  content: "цель";
+  position:absolute; top:-11px; left: 20px;
+  background: var(--ink);
+  padding: 2px 10px;
+  font-family:'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ember-bright);
+  border: 1px solid rgba(217,96,42,0.4);
+  border-radius: 999px;
+}
+.note-card .handwritten{
+  font-family:'Caveat', cursive;
+  font-size: 1.5rem;
+  color: var(--ember-bright);
+  line-height:1.3;
+  margin: 6px 0 14px;
+}
+.note-card p{ color: var(--paper-dim); margin: 0 0 10px; font-size:0.95rem; }
+.note-card p:last-child{ margin-bottom:0; }
+
+/* ---------- BOMB LABELS ---------- */
+.bomb-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 16px;
+}
+.bomb-label{
+  border-radius: 4px;
+  padding: 18px 16px;
+  border: 1px solid rgba(0,0,0,0.25);
+  position: relative;
+  min-height: 150px;
+  display:flex; flex-direction:column; justify-content:space-between;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+}
+.bomb-label:hover{ transform: translateY(-4px); box-shadow: 0 14px 26px rgba(0,0,0,0.4); }
+.bomb-label .kind{
+  font-family:'Cinzel', serif;
+  font-weight:600;
+  font-size: 1rem;
+  color: var(--ink-deep);
+}
+.bomb-label .dmg{
+  font-family:'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: rgba(7,13,11,0.75);
+  margin-top: 4px;
+}
+.bomb-label .effect{
+  font-size: 0.85rem;
+  color: rgba(7,13,11,0.85);
+  margin-top: 10px;
+}
+.bomb-label .cork{
+  position:absolute; top:-9px; left: 50%; transform: translateX(-50%);
+  width: 26px; height: 16px; border-radius: 3px 3px 0 0;
+  background: #8a6b3d;
+  border: 1px solid rgba(0,0,0,0.3);
+}
+.b-fire{ background: linear-gradient(160deg, #f0a45f, #e2632a); }
+.b-acid{ background: linear-gradient(160deg, #b9d17a, #7a9e3a); }
+.b-frost{ background: linear-gradient(160deg, #bfe4e6, #6fa9ae); }
+.b-poison{ background: linear-gradient(160deg, #c9a7d6, #7d5a92); }
+.b-smoke{ background: linear-gradient(160deg, #cfcfcf, #8f8f8f); }
+
+/* ---------- SEALS (feat / spell) ---------- */
+.seal-row{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+.seal-card{
+  background: var(--ink-deep);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 24px 26px;
+  display:flex; gap:18px;
+}
+.seal-icon{
+  flex: 0 0 auto;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  border: 2px solid var(--verdigris);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Cinzel', serif;
+  font-size: 20px;
+  color: var(--verdigris);
+}
+.seal-card h3{
+  font-family:'Cinzel', serif;
+  font-size: 1rem;
+  margin: 0 0 6px;
+  color: var(--brass-bright);
+}
+.seal-card p{ margin: 0 0 8px; color: var(--paper-dim); font-size: 0.92rem; }
+.seal-card .meta{
+  font-family:'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--verdigris);
+  letter-spacing: 0.04em;
+}
+
+/* ---------- MANIFEST ---------- */
+.manifest{
+  background: var(--ink-deep);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 22px 28px;
+  font-family:'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--paper-dim);
+  columns: 2;
+  column-gap: 40px;
+}
+.manifest div{
+  break-inside: avoid;
+  padding: 6px 0;
+  border-bottom: 1px dashed rgba(236,225,196,0.12);
+  display:flex; justify-content:space-between; gap: 10px;
+}
+.manifest div span:first-child{ color: var(--paper); }
+.manifest div span:last-child{ color: var(--brass-bright); }
+
+/* ---------- FOOTER ---------- */
+footer{
+  margin-top: 56px;
+  text-align:center;
+  font-family:'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: rgba(236,225,196,0.35);
+  letter-spacing: 0.08em;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 760px){
+  .dials{ grid-template-columns: repeat(2, 1fr); }
+  .two-col{ grid-template-columns: 1fr; }
+  .seal-row{ grid-template-columns: 1fr; }
+  .manifest{ columns: 1; }
+  .hero{ padding: 32px 22px 28px; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .bomb-label{ transition: none; }
+}
+
+:focus-visible{
+  outline: 2px solid var(--ember-bright);
+  outline-offset: 2px;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="case-number">Личное дело <div class="rule"></div> № 006</div>
+    <h1>Фидельо Искросвет</h1>
+    <div class="subtitle">алхимик · архетип «бомбардир» · хаотично-добрый</div>
+    <div class="tags">
+      <span class="tag">Человек</span>
+      <span class="tag">Алхимик, 6 уровень</span>
+      <span class="tag">Бонус мастерства +3</span>
+      <span class="tag">Посвящённый в магию</span>
+    </div>
+  </div>
+
+  <!-- TL;DR -->
+  <div class="section">
+    <div class="parchment">
+      <div class="stamp"><span>ЛИЧНОЕ<br>ДЕЛО</span></div>
+      <p class="lead">Взрывной, обаятельный алхимик-самоучка, который прикрывает флирт химией и харизмой.</p>
+      <p>Приходит в отряд с ящиком бомб и планом очаровать шамана из соседнего отряда — не потому что «надо», а потому что ему правда интересно, что скрывается за этим спокойствием и связью с духами. Держит дневник погибшего учителя — единственная тема, где теряет весь свой шарм и говорит искренне.</p>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="section">
+    <div class="section-head"><span class="num">01</span><h2>Ключевые показатели</h2><div class="rule"></div></div>
+    <div class="dials">
+
+      <div class="dial-card">
+        <svg class="dial" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(201,162,39,0.15)" stroke-width="6"/>
+          <circle cx="50" cy="50" r="42" fill="none" stroke="#c9a227" stroke-width="6" stroke-linecap="round"
+            stroke-dasharray="264" stroke-dashoffset="66" transform="rotate(-90 50 50)"/>
+          <text x="50" y="56" text-anchor="middle" class="dial-value">15</text>
+        </svg>
+        <div class="dial-label">КД</div>
+      </div>
+
+      <div class="dial-card">
+        <svg class="dial" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(201,162,39,0.15)" stroke-width="6"/>
+          <circle cx="50" cy="50" r="42" fill="none" stroke="#e2632a" stroke-width="6" stroke-linecap="round"
+            stroke-dasharray="264" stroke-dashoffset="26" transform="rotate(-90 50 50)"/>
+          <text x="50" y="56" text-anchor="middle" class="dial-value">45</text>
+        </svg>
+        <div class="dial-label">HP</div>
+      </div>
+
+      <div class="dial-card">
+        <svg class="dial" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(201,162,39,0.15)" stroke-width="6"/>
+          <circle cx="50" cy="50" r="42" fill="none" stroke="#5f9080" stroke-width="6" stroke-linecap="round"
+            stroke-dasharray="264" stroke-dashoffset="120" transform="rotate(-90 50 50)"/>
+          <text x="50" y="56" text-anchor="middle" class="dial-value">+8</text>
+        </svg>
+        <div class="dial-label">Атака бомбой</div>
+      </div>
+
+      <div class="dial-card">
+        <svg class="dial" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(201,162,39,0.15)" stroke-width="6"/>
+          <circle cx="50" cy="50" r="42" fill="none" stroke="#c9a227" stroke-width="6" stroke-linecap="round"
+            stroke-dasharray="264" stroke-dashoffset="70" transform="rotate(-90 50 50)"/>
+          <text x="50" y="56" text-anchor="middle" class="dial-value">16</text>
+        </svg>
+        <div class="dial-label">СЛ спасброска</div>
+      </div>
+
+      <div class="dial-card">
+        <svg class="dial" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(201,162,39,0.15)" stroke-width="6"/>
+          <circle cx="50" cy="50" r="42" fill="none" stroke="#e2632a" stroke-width="6" stroke-linecap="round"
+            stroke-dasharray="264" stroke-dashoffset="180" transform="rotate(-90 50 50)"/>
+          <text x="50" y="56" text-anchor="middle" class="dial-value">+3</text>
+        </svg>
+        <div class="dial-label">Мастерство</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CHARACTER + GOAL -->
+  <div class="section">
+    <div class="section-head"><span class="num">02</span><h2>Характер и цель</h2><div class="rule"></div></div>
+    <div class="two-col">
+      <div class="card-dark">
+        <h3>Кто он в двух словах</h3>
+        <ul class="trait-list">
+          <li>Уверенный в себе, болтливый, обожает производить впечатление — особенно на того, кто не поддаётся сразу</li>
+          <li>Флиртует через демонстрацию мастерства: эффектный трюк вместо цветов</li>
+          <li>Слабость: не может устоять перед вызовом — будь то опасная формула или человек, которого сложно прочитать</li>
+          <li>ИНТ 20 (+5) — мозги важнее мускулов</li>
+        </ul>
+      </div>
+      <div class="note-card">
+        <div class="handwritten">«Хочу понять, что она видит там, где я вижу только тишину.»</div>
+        <p><strong>Соблазнить персонажа-шамана</strong> (ПС другого игрока). Личная сюжетная линия, не связанная с задачами отряда.</p>
+        <p>Предлагает помощь эликсирами и защитой в бою как повод для сближения. Разговор о потере учителя — единственный момент, когда он не острит.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOMBS -->
+  <div class="section">
+    <div class="section-head"><span class="num">03</span><h2>Запас бомб — 9/день</h2><div class="rule"></div></div>
+    <div class="bomb-grid">
+
+      <div class="bomb-label b-fire">
+        <div class="cork"></div>
+        <div><div class="kind">Огненная</div><div class="dmg">2к6 огонь</div></div>
+        <div class="effect">Поджигает горючие материалы</div>
+      </div>
+
+      <div class="bomb-label b-acid">
+        <div class="cork"></div>
+        <div><div class="kind">Кислотная</div><div class="dmg">2к6 кислота</div></div>
+        <div class="effect">−2 КД цели на 1 раунд</div>
+      </div>
+
+      <div class="bomb-label b-frost">
+        <div class="cork"></div>
+        <div><div class="kind">Морозная</div><div class="dmg">2к6 холод</div></div>
+        <div class="effect">Скорость цели −3 м, 1 раунд</div>
+      </div>
+
+      <div class="bomb-label b-poison">
+        <div class="cork"></div>
+        <div><div class="kind">Ядовитая</div><div class="dmg">2к6 яд</div></div>
+        <div class="effect">Спасбросок ТЕЛ или отравление, 1 мин</div>
+      </div>
+
+      <div class="bomb-label b-smoke">
+        <div class="cork"></div>
+        <div><div class="kind">Дымовая</div><div class="dmg">—</div></div>
+        <div class="effect">Зона видимости 3 м</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FEAT + SPELL -->
+  <div class="section">
+    <div class="section-head"><span class="num">04</span><h2>Черта и заклинание</h2><div class="rule"></div></div>
+    <div class="seal-row">
+      <div class="seal-card">
+        <div class="seal-icon">М</div>
+        <div>
+          <h3>Посвящённый в магию</h3>
+          <p>Взята вместо улучшения характеристик на 4 уровне. Список — Волшебник.</p>
+          <p class="meta">Заговоры: Фокусы · Рука Мага</p>
+        </div>
+      </div>
+      <div class="seal-card">
+        <div class="seal-icon">◐</div>
+        <div>
+          <h3>Невидимый слуга</h3>
+          <p>Накладывается 1 раз в день без траты ячейки, восстанавливается после длинного отдыха.</p>
+          <p class="meta">Носит реагенты, разливает зелья, открывает двери не вовремя</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INVENTORY -->
+  <div class="section">
+    <div class="section-head"><span class="num">05</span><h2>Снаряжение</h2><div class="rule"></div></div>
+    <div class="manifest">
+      <div><span>Кожаный доспех</span><span>1</span></div>
+      <div><span>Кинжалы</span><span>2</span></div>
+      <div><span>Набор алхимика</span><span>1</span></div>
+      <div><span>Мешочек реагентов</span><span>1</span></div>
+      <div><span>Дневник учителя</span><span>1</span></div>
+      <div><span>Фляга с элем</span><span>1</span></div>
+      <div><span>Золотые монеты</span><span>55 зм</span></div>
+      <div><span>Бомбы (запас)</span><span>9</span></div>
+    </div>
+  </div>
+
+  <footer>long story short · лист персонажа для стола и для сайта</footer>
+
+</div>
+</body>
+</html>
